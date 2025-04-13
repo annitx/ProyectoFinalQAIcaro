@@ -12,6 +12,9 @@ public class FormsPage extends BasePage {
     private String inputPassword = "password";
     private String btnRegister = "registerBtn";
     private String lblMsj = "message";
+    private String passHelp = "pwHelp";
+    private String mandatoryHelp = "lnHelp";
+    private String phoneHelp = "phoneHelp";
 
     public FormsPage(WebDriver driver) {
         super(driver);
@@ -43,5 +46,17 @@ public class FormsPage extends BasePage {
 
     public String verLblRegister() {
         return getTextById(lblMsj);
+    }
+
+    public String getPasswordHelpMessage() {
+        return getTextById(passHelp);
+    }
+
+    public String getMandatoryMessage() {
+        return getTextById(mandatoryHelp);
+    }
+
+    public String getPhoneHelpMessage() {
+        return getTextById(phoneHelp);
     }
 }

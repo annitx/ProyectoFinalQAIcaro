@@ -11,7 +11,7 @@ Feature: Completar formulario
     And el usuario ingresa Phone number "<Phonenumber>"
     And el usuario ingresa Country "<Country>"
     And el usuario ingresa Email address "<EmailAddress>"
-    And el usuario ingresa Email Password "<Password>"
+    And el usuario ingresa Password "<Password>"
     And el usuario hace clic boton Register
     Then el usuario visualiza el mensaje "<msjValidacion>"
 
@@ -26,7 +26,7 @@ Feature: Completar formulario
     And el usuario ingresa Phone number "<Phonenumber>"
     And el usuario ingresa Country "<Country>"
     And el usuario ingresa Email address "<EmailAddress>"
-    And el usuario ingresa Email Password "<Password>"
+    And el usuario ingresa Password "<Password>"
     And el usuario hace clic boton Register
     Then el usuario visualiza el mensaje "<msjValidacion>"
 
@@ -34,3 +34,26 @@ Feature: Completar formulario
       | FirstName | LastName | Phonenumber | Country   | EmailAddress  | Password | msjValidacion|
       | Anahi       | Marc     | 12345       | Argentina | ana@test.com  | pass123  | The phone number should contain at least 10 characters! |
 
+  @BugsFormMensajePasswordLength
+  Scenario Outline: El usuario visualiza mensaje de ayuda en campo Password
+    Then el usuario visualiza el mensaje de ayuda de contraseña "<mensajeAyuda>"
+
+    Examples:
+    | mensajeAyuda                             |
+    | Psw length validation: [6,20] characters  |
+
+  @BugsFormMensajeMandatory
+  Scenario Outline: El usuario visualiza el mensaje campo obligatorio
+    Then el usuario visualiza el mensaje de ayuda obligatorio "<mensajeAyuda>"
+
+    Examples:
+      | mensajeAyuda                             |
+      | Note: All the fields marked with * are mandatory |
+
+  @BugsFormMensajePhone
+  Scenario Outline: El usuario visualiza el mensaje de ayuda en el campo Phone
+    Then el usuario visualiza el mensaje de ayuda de teléfono "<mensajeAyuda>"
+
+    Examples:
+      | mensajeAyuda                             |
+      | Phone length validation: at least 10 digits|
